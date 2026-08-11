@@ -1,0 +1,372 @@
+<title>Ko Htun — Governance Dossier</title>
+<style>
+  :root {
+    --bg: #F4EFE6;
+    --bg-raise: #FBF8F1;
+    --ink: #211D18;
+    --muted: #6B635A;
+    --line: rgba(33, 29, 24, 0.16);
+    --line-soft: rgba(33, 29, 24, 0.08);
+    --brass: #9A6E2A;
+    --copper: #A4552E;
+    --teal: #1F6E63;
+    --warn: #B27A1E;
+    --pr: var(--brass);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12151B;
+      --bg-raise: #1A1F28;
+      --ink: #E8E4DA;
+      --muted: #8B8F97;
+      --line: rgba(232, 228, 218, 0.16);
+      --line-soft: rgba(232, 228, 218, 0.07);
+      --brass: #D8A45C;
+      --copper: #C9825A;
+      --teal: #63B5A6;
+      --warn: #E3B14F;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #12151B;
+    --bg-raise: #1A1F28;
+    --ink: #E8E4DA;
+    --muted: #8B8F97;
+    --line: rgba(232, 228, 218, 0.16);
+    --line-soft: rgba(232, 228, 218, 0.07);
+    --brass: #D8A45C;
+    --copper: #C9825A;
+    --teal: #63B5A6;
+    --warn: #E3B14F;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: color-mix(in srgb, var(--pr) 28%, transparent); }
+  :focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap { max-width: 780px; margin: 0 auto; padding: 64px 24px 88px; }
+
+  .mono, .stamp, .stat-n, .meta, .eyebrow, .roles, .cover-tag, .tagline, .foot { font-family: ui-monospace, "SF Mono", "Cascadia Mono", "JetBrains Mono", "Fira Code", Menlo, Consolas, "Liberation Mono", monospace; font-variant-numeric: tabular-nums; }
+
+  /* ---------- cover ---------- */
+  .cover {
+    border: 1px solid var(--line);
+    background: var(--bg-raise);
+    border-radius: 10px;
+    padding: 28px 28px 30px;
+    animation: rise .6s cubic-bezier(.2,.7,.3,1) both;
+  }
+  .cover-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .eyebrow {
+    font-size: .72rem; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--pr); font-weight: 600;
+  }
+  .cover-tag { font-size: .72rem; letter-spacing: .06em; color: var(--muted); }
+  .rule { height: 1px; background: var(--line-soft); margin: 20px 0 22px; }
+
+  .meta { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px 24px; margin-bottom: 26px; }
+  .meta div { display: flex; gap: 10px; min-width: 0; }
+  .meta dt { color: var(--muted); flex: 0 0 auto; width: 86px; font-size: .74rem; letter-spacing: .06em; }
+  .meta dd { margin: 0; font-size: .78rem; color: var(--ink); overflow-wrap: anywhere; }
+
+  .title {
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", "JetBrains Mono", "Fira Code", Menlo, Consolas, monospace;
+    font-size: clamp(2.05rem, 6.5vw, 3.1rem);
+    line-height: 1.04;
+    font-weight: 700;
+    letter-spacing: -.015em;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+  .cursor { display: inline-block; width: .62em; height: .82em; background: var(--teal); margin-left: .12em; vertical-align: -0.06em; animation: blink 1.1s steps(2, start) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .sub { font-size: 1.06rem; line-height: 1.6; color: var(--muted); margin: 0 0 24px; max-width: 60ch; }
+
+  .tagline {
+    display: flex; gap: 14px; flex-wrap: wrap;
+    font-size: .76rem; letter-spacing: .04em; color: var(--muted);
+    border-top: 1px dashed var(--line); padding-top: 18px;
+  }
+  .tagline b { color: var(--ink); font-weight: 600; }
+
+  /* ---------- invariants spine ---------- */
+  .spine {
+    margin: 40px 0 8px;
+    display: flex; gap: 10px; flex-wrap: wrap;
+    padding: 2px 0;
+  }
+  .stamp {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--ink); white-space: nowrap;
+  }
+  .stamp::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--stamp-c, var(--teal)); flex: 0 0 auto;
+  }
+
+  /* ---------- records ---------- */
+  .record { margin-top: 64px; }
+  .record-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .record-name {
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", "JetBrains Mono", "Fira Code", Menlo, Consolas, monospace;
+    font-size: clamp(1.3rem, 3.4vw, 1.7rem); font-weight: 700; letter-spacing: -.01em; margin: 0;
+  }
+  .record-index { color: var(--pr); }
+  .roles { font-size: .74rem; letter-spacing: .05em; color: var(--muted); white-space: nowrap; }
+  .one-liner { font-size: 1.02rem; color: var(--ink); max-width: 62ch; margin: 12px 0 20px; }
+
+  .stats {
+    display: grid; grid-template-columns: repeat(4, minmax(0,1fr));
+    gap: 1px; background: var(--line-soft);
+    border: 1px solid var(--line); border-radius: 10px; overflow: hidden;
+    margin: 26px 0 28px;
+  }
+  .stat { background: var(--bg-raise); padding: 16px 18px 14px; }
+  .stat-n { font-size: 1.75rem; font-weight: 700; letter-spacing: -.01em; color: var(--pr); line-height: 1.05; }
+  .stat-l { margin-top: 5px; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+
+  .facts { list-style: none; margin: 0 0 22px; padding: 0; border-top: 1px solid var(--line-soft); }
+  .fact { display: grid; grid-template-columns: 168px 1fr; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--line-soft); }
+  .fact .stamp { align-self: start; margin-top: 1px; }
+  .fact p { margin: 0; font-size: .95rem; color: var(--ink); max-width: 60ch; }
+  .fact code { font-family: ui-monospace, "SF Mono", "Cascadia Mono", "JetBrains Mono", "Fira Code", Menlo, Consolas, monospace; font-size: .88em; color: var(--pr); background: color-mix(in srgb, var(--pr) 10%, transparent); padding: .05em .32em; border-radius: 4px; }
+
+  .caveats {
+    border: 1px solid color-mix(in srgb, var(--warn) 45%, transparent);
+    border-left-width: 3px;
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--warn) 6%, var(--bg-raise));
+    padding: 16px 20px 14px;
+  }
+  .caveats h4 { margin: 0 0 10px; font-family: ui-monospace, "SF Mono", "Cascadia Mono", "JetBrains Mono", "Fira Code", Menlo, Consolas, monospace; font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--warn); }
+  .caveats ul { margin: 0; padding-left: 18px; }
+  .caveats li { font-size: .9rem; color: var(--muted); margin: 6px 0; }
+
+  .attrib {
+    margin-top: 18px; font-size: .88rem; color: var(--ink);
+    border: 1px dashed var(--line); border-radius: 8px; padding: 14px 18px;
+  }
+  .attrib code { font-family: ui-monospace, "SF Mono", "Cascadia Mono", "JetBrains Mono", "Fira Code", Menlo, Consolas, monospace; font-size: .9em; color: var(--teal); }
+  .repo-link { margin-top: 10px; }
+  .repo-link a {
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", "JetBrains Mono", "Fira Code", Menlo, Consolas, monospace;
+    font-size: .78rem; letter-spacing: .02em; color: var(--pr);
+    text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--pr) 45%, transparent);
+  }
+  .repo-link a:hover { border-bottom-color: currentColor; }
+  .repo-link a::after { content: " ↗"; }
+  .foot-link { color: var(--teal); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--teal) 45%, transparent); }
+  .foot-link:hover { border-bottom-color: currentColor; }
+
+  /* ---------- footer ---------- */
+  .foot {
+    margin-top: 72px; padding-top: 22px; border-top: 1px solid var(--line);
+    font-size: .76rem; letter-spacing: .02em; line-height: 1.7; color: var(--muted);
+  }
+  .foot .row { display: flex; gap: 18px; flex-wrap: wrap; }
+
+  @media (max-width: 640px) {
+    .wrap { padding: 36px 16px 64px; }
+    .meta { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .fact { grid-template-columns: 1fr; gap: 8px; }
+    .fact .stamp { align-self: auto; }
+    .cover { padding: 22px 20px 24px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cover { animation: none; }
+    .cursor { animation: none; }
+  }
+</style>
+
+<div class="wrap">
+
+  <!-- cover -->
+  <header class="cover">
+    <div class="cover-top">
+      <span class="eyebrow">Engineering Dossier</span>
+      <span class="cover-tag">coffee-memory.github.io · two flagship systems</span>
+    </div>
+    <div class="rule"></div>
+
+    <dl class="meta">
+      <div><dt>author</dt><dd>Ko Htun (Htun Htun Win)</dd></div>
+      <div><dt>region</dt><dd>Myanmar</dd></div>
+      <div><dt>focus</dt><dd>SaaS · ERP · POS · Payroll</dd></div>
+      <div><dt>status</dt><dd>Actively building</dd></div>
+      <div><dt>principle</dt><dd>Governance first, revenue second</dd></div>
+      <div><dt>stack</dt><dd>React · TypeScript · Supabase</dd></div>
+    </dl>
+
+    <h1 class="title">Sealed at the database.<span class="cursor" aria-hidden="true"></span></h1>
+    <p class="sub">Two flagship projects where the boundary invariants live in the schema — approvals are RPC-only, approved records are immutable, and the audit trail is append-only. No client bug can violate them.</p>
+
+    <div class="tagline">
+      <span><b>Governance layer</b> RBAC · Audit · Tenant isolation</span>
+      <span><b>Business logic</b> RPC-only approvals · Service layer</span>
+      <span><b>Presentation</b> Mobile-first · React · Context</span>
+    </div>
+  </header>
+
+  <!-- invariants spine -->
+  <div class="spine" aria-label="Shared invariants">
+    <span class="stamp" style="--stamp-c:var(--teal)">RLS tenant isolation</span>
+    <span class="stamp" style="--stamp-c:var(--teal)">RPC-only approvals</span>
+    <span class="stamp" style="--stamp-c:var(--teal)">Immutable records</span>
+    <span class="stamp" style="--stamp-c:var(--teal)">Append-only audit</span>
+    <span class="stamp" style="--stamp-c:var(--teal)">Server-side truth</span>
+  </div>
+
+  <!-- record 01 : ERP -->
+  <section class="record erp" style="--pr:var(--brass)">
+    <div class="record-head">
+      <h2 class="record-name"><span class="record-index">01</span> Nexus Factory ERP</h2>
+      <span class="roles">owner · admin · supervisor · editor · viewer</span>
+    </div>
+    <p class="one-liner">Governed, multi-tenant workforce-intelligence SaaS for garment factories — a factory ERP where the database itself enforces the business rules.</p>
+    <div class="roles">React 18 · TypeScript (strict) · Vite · MUI v7 · Supabase (Postgres 17, RLS, RPCs, Auth) · i18next EN+MY · PWA</div>
+    <div class="repo-link"><a href="https://github.com/kohtun386/factory-erp-supabase" target="_blank" rel="noopener">github.com/kohtun386/factory-erp-supabase</a></div>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-n">38</div><div class="stat-l">tables</div></div>
+      <div class="stat"><div class="stat-n">109</div><div class="stat-l">RLS policies</div></div>
+      <div class="stat"><div class="stat-n">55</div><div class="stat-l">SECURITY DEFINER</div></div>
+      <div class="stat"><div class="stat-n">122</div><div class="stat-l">triggers</div></div>
+    </div>
+
+    <ul class="facts">
+      <li class="fact">
+        <span class="stamp" style="--stamp-c:var(--brass)">Tenant context</span>
+        <p>Every policy gates on <code>factory_id = current_factory_id()</code>, resolved from active membership — and <code>factory_id</code> itself is immutable across ~20 tables.</p>
+      </li>
+      <li class="fact">
+        <span class="stamp" style="--stamp-c:var(--brass)">Write: RPC-only</span>
+        <p><code>production_logs</code> carries <em>only</em> a SELECT policy — clients cannot INSERT, UPDATE, or DELETE. All writes flow through <code>approve_production_log</code> / <code>log_production_atomic</code>, which open a write path via a session flag no client session can set.</p>
+      </li>
+      <li class="fact">
+        <span class="stamp" style="--stamp-c:var(--brass)">Audit: append-only</span>
+        <p><code>audit_logs</code> raises on UPDATE and DELETE. The trail cannot be rewritten, and the approval flow writes its own audit entry.</p>
+      </li>
+      <li class="fact">
+        <span class="stamp" style="--stamp-c:var(--brass)">State: locked</span>
+        <p>Approved logs are locked — only <code>payment_status</code> may change. Payroll is a real state machine: <code>DRAFT → CALCULATED → FINALIZED → PAID</code>, with invalid transitions rejected by trigger.</p>
+      </li>
+      <li class="fact">
+        <span class="stamp" style="--stamp-c:var(--brass)">Atomic allocation</span>
+        <p>On approval, material consumption is computed from a <code>required_materials</code> snapshot and written atomically with stock movements and trace rows — idempotent on retry.</p>
+      </li>
+      <li class="fact">
+        <span class="stamp" style="--stamp-c:var(--brass)">Onboard: invite-only</span>
+        <p>Invitation RPCs plus a <code>provision-tenant</code> Deno edge function create factory and owner; tenant isolation is in place from day one.</p>
+      </li>
+      <li class="fact">
+        <span class="stamp" style="--stamp-c:var(--brass)">CI: governed writes</span>
+        <p>A script greps the entire frontend for any forbidden direct table write and fails CI — a belt-and-suspenders layer on top of RLS.</p>
+      </li>
+    </ul>
+
+    <div class="caveats">
+      <h4>Found in review</h4>
+      <ul>
+        <li>E2E tests exist but are not wired into CI.</li>
+        <li><code>deploy/SECURITY_NOTES.md</code> claims an <code>npm audit</code> step that CI does not actually run.</li>
+        <li>The README quotes a “canonical UPDATE policy” from an archived migration — the live baseline is stricter, with no client UPDATE path at all.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- record 02 : POS -->
+  <section class="record pos" style="--pr:var(--copper)">
+    <div class="record-head">
+      <h2 class="record-name"><span class="record-index">02</span> POS-system</h2>
+      <span class="roles">platform_admin · admin · manager · cashier</span>
+    </div>
+    <p class="one-liner">Multi-tenant SaaS POS for Myanmar coffee &amp; tea shops — a 12-commit starter rebuilt into a tiered, RLS-hardened platform. 404 commits ahead of upstream.</p>
+    <div class="roles">React 18 · TypeScript 5.5 (strict) · Vite 5 · Tailwind 3 · Context + useReducer · Supabase (RLS, Edge Functions, Realtime) · PWA</div>
+    <div class="repo-link"><a href="https://github.com/kohtun386/POS-system" target="_blank" rel="noopener">github.com/kohtun386/POS-system</a></div>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-n">404</div><div class="stat-l">commits ahead</div></div>
+      <div class="stat"><div class="stat-n">86</div><div class="stat-l">migrations</div></div>
+      <div class="stat"><div class="stat-n">13</div><div class="stat-l">edge functions</div></div>
+      <div class="stat"><div class="stat-n">51</div><div class="stat-l">tests</div></div>
+    </div>
+
+    <ul class="facts">
+      <li class="fact">
+        <span class="stamp" style="--stamp-c:var(--copper)">Atomic checkout</span>
+        <p><code>checkout_complete</code> recomputes the total <em>server-side</em> — a tampered client amount is ignored — then reserves invoice numbers, deducts stock, and updates customer stats in one transaction.</p>
+      </li>
+      <li class="fact">
+        <span class="stamp" style="--stamp-c:var(--copper)">9 payment methods</span>
+        <p>KBZpay, WavePay, AYAPay, CBPay, MPU — plus split payments and credit sales, built for Myanmar payment reality.</p>
+      </li>
+      <li class="fact">
+        <span class="stamp" style="--stamp-c:var(--copper)">Tiered SaaS</span>
+        <p>Free / Growth / Pro enforced server-side: a 50-product limit with row-lock race protection and daily-order limits with <code>SELECT … FOR UPDATE</code>.</p>
+      </li>
+      <li class="fact">
+        <span class="stamp" style="--stamp-c:var(--copper)">Role-aware RLS</span>
+        <p><code>platform_admin</code> never appears in a policy — it operates only through service-role Edge Functions. Privileged RPCs are <code>REVOKE EXECUTE FROM PUBLIC</code>; one Greptile-audited HIGH-severity vector was closed exactly this way.</p>
+      </li>
+      <li class="fact">
+        <span class="stamp" style="--stamp-c:var(--copper)">Audit: implicit deny</span>
+        <p><code>audit_logs</code> has zero RLS policies — implicit deny for clients; only Edge Functions write, capturing IP from <code>X-Forwarded-For</code>.</p>
+      </li>
+      <li class="fact">
+        <span class="stamp" style="--stamp-c:var(--copper)">Data: minimized</span>
+        <p>Card numbers are stripped from JSONB in production data, and a CORS wildcard was replaced with an explicit allowlist.</p>
+      </li>
+      <li class="fact">
+        <span class="stamp" style="--stamp-c:var(--copper)">Tested</span>
+        <p>33 pgTAP RLS tests · 11 Vitest suites · 7 Playwright journeys. i18n parity and schema-drift gates run in CI and on <code>pre-commit</code>.</p>
+      </li>
+    </ul>
+
+    <div class="caveats">
+      <h4>Found in review</h4>
+      <ul>
+        <li>i18n is Phase 0 — the parity harness is green, but actual Burmese translation is not wired in yet.</li>
+        <li><code>claude-mem</code> sits in runtime dependencies; likely an agent-tooling artifact rather than a shipped feature.</li>
+        <li>Stale metadata: README counts (55→86 migrations), <code>package.json</code> repository still points upstream, store default is <code>'sekaLabs 2025 POS'</code>.</li>
+      </ul>
+    </div>
+
+    <div class="attrib">
+      <b>Attribution:</b> the 404 commits are the author’s work on top of <code>12 upstream commits</code>. This is a fork-turned-rewrite, not a from-scratch project — the multi-tenant SaaS framing reflects exactly that.
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer class="foot">
+    <div class="row">
+      <span>Every claim above was verified against the repositories on 2026-08-10 — git history, migrations, configs, and test suites.</span>
+      <span>Ambiguities are marked <b>found in review</b> rather than hidden.</span>
+    </div>
+    <div class="row" style="margin-top:8px">
+      <span>ERP record · brass</span>
+      <span>POS record · copper</span>
+      <span>shared spine · teal</span>
+    </div>
+    <div class="row" style="margin-top:12px">
+      <span>Profile · <a href="https://github.com/kohtun386" target="_blank" rel="noopener" class="foot-link">github.com/kohtun386</a></span>
+    </div>
+  </footer>
+
+</div>
