@@ -8,7 +8,7 @@ My background is **10+ years in hospitality and business operations management**
 
 Based in Myanmar, building for Myanmar SME realities: MMK currency, local payment methods, shared tablets, low-connectivity sites, and audit-heavy operations.
 
-[LinkedIn](https://www.linkedin.com/in/ko-htun-htun-win-146970102/) · [Email](mailto:kohtunhtun386@gmail.com) · [GitHub](https://github.com/kohtun386)
+[Portfolio](https://kohtun386.github.io) · [LinkedIn](https://www.linkedin.com/in/ko-htun-htun-win-146970102/) · [Email](mailto:kohtunhtun386@gmail.com) · [GitHub](https://github.com/kohtun386)
 
 ---
 
@@ -177,7 +177,7 @@ A decentralized security framework for detecting **Shadow AI** across enterprise
 
 ## Connect
 
-[LinkedIn](https://www.linkedin.com/in/ko-htun-htun-win-146970102/) · [Email](mailto:kohtunhtun386@gmail.com) · [GitHub](https://github.com/kohtun386)
+[Portfolio](https://kohtun386.github.io) · [LinkedIn](https://www.linkedin.com/in/ko-htun-htun-win-146970102/) · [Email](mailto:kohtunhtun386@gmail.com) · [GitHub](https://github.com/kohtun386)
 
 <p align="center">
   <i>Operations-first product building, delivered with AI agents.</i><br>
