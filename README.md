@@ -1,164 +1,185 @@
 # Ko Htun (Htun Htun Win)
 
-![Status](https://img.shields.io/badge/Status-Actively%20Building-success)
-![Focus](https://img.shields.io/badge/Focus-SaaS%20%7C%20ERP%20%7C%20Payroll-1f6feb)
-![Region](https://img.shields.io/badge/Region-Myanmar-3fcf8e)
+### Operations & Workflow Architect | AI-Orchestrated Product Builder | MBA
 
-> **Product-focused full-stack developer** building governed, deterministic SaaS platforms for manufacturing, academic automation, and POS systems. I design systems where data integrity is non-negotiable and audit trails are sealed at the database level.
+I design the operating models behind SME software — the workflows, roles, data boundaries, and approval paths — then use AI coding agents (Claude Code, Codex, Cursor, Gemini) to turn those designs into working products.
 
----
+My background is **10+ years in hospitality and business operations management**, not traditional manual coding. I work as a workflow architect and product builder: I map how a business actually runs, define the rules and exceptions, and direct AI agents to implement, test, and harden the system.
 
-## What I Build
+Based in Myanmar, building for Myanmar SME realities: MMK currency, local payment methods, shared tablets, low-connectivity sites, and audit-heavy operations.
 
-- **Factory ERP** — Multi-tenant workforce intelligence for garment/textile manufacturing
-- **Academic Automation** — AI-powered thesis generation with multi-agent orchestration and HITL quality gates
-- **POS Systems** — In-browser point-of-sale with payments and inventory workflows
-- **Payroll Automation** — Piece-rate payroll engines for textile mills with deterministic calculation
-
-**Core Principles:**
-- 🏛️ **Governance First** — RBAC, audit trails, immutable logs
-- 📱 **Mobile-First** — Owner and supervisor workflows on the go
-- 🔒 **Data Integrity** — RLS-enforced tenant isolation, RPC-only approvals
-- 🌏 **Local-First** — Built for Myanmar market realities
+[LinkedIn](https://www.linkedin.com/in/ko-htun-htun-win-146970102/) · [Email](mailto:kohtunhtun386@gmail.com) · [GitHub](https://github.com/kohtun386)
 
 ---
 
-## Tech Stack
+## What I Do
 
-| Layer | Technologies |
-|-------|--------------|
-| **Frontend** | React 18 · Vite · TypeScript · MUI v7 |
-| **Backend** | Supabase (Postgres · Auth · RLS · RPCs) · Firebase |
-| **Architecture** | React Context API · Service-layer mutations · Deterministic flows |
-| **Deployment** | Vercel · GitHub Actions |
-| **Mobile** | Flutter · Dart |
-| **Tools** | Claude Code · n8n · Docker |
+- **Workflow architecture** — model roles, handoffs, approvals, exceptions, and audit requirements before writing code.
+- **Product building** — turn operator knowledge into scoped, testable SaaS for real business constraints.
+- **AI-orchestrated delivery** — use Claude Code, Codex, Cursor, and Gemini to accelerate implementation, migrations, tests, and documentation; review and verify the output.
+- **Governance-first design** — Row Level Security, RBAC, immutable audit trails, and RPC-only approval paths.
+- **Domain focus** — manufacturing ERP, retail/POS, workforce and HR automation, and AI-assisted sales workflows.
 
 ---
 
-## Featured Projects
+## Tech & Tools
 
-### 🏭 Factory ERP V4
-
-**Governed, enterprise-ready workforce intelligence SaaS for garment factories.**
-
-![Status](https://img.shields.io/badge/Status-Active-success)
-![Stack](https://img.shields.io/badge/Stack-React%20%2B%20Supabase-1f6feb)
-
-- **Repo:** [kohtun386/factory-erp-supabase](https://github.com/kohtun386/factory-erp-supabase) *(private)*
-- **Stack:** React + Vite · Supabase · MUI v7 · TypeScript
-- **Status:** Active Development (Phase 2 — Onboarding & Governance)
-- **Key Features:**
-  - Multi-tenant architecture with Row Level Security
-  - Deterministic production log approvals (RPC-only)
-  - Immutable audit trails
-  - Invite-only self-serve onboarding
-  - Mobile-first UX for supervisors and operators
-
-**Architecture Invariants:**
-- Approvals via `SECURITY DEFINER` RPCs only
-- Approved records are immutable (no UPDATE, no DELETE)
-- Process gates enforce valid state transitions
-- Audit trails are append-only
-
-> *"Approval is RPC-only. Immutability is enforced at the database level. No client bug can violate boundary invariants."*
+| Area | Tools |
+|---|---|
+| **Product & workflow** | Process mapping, role/permission design, state machines, acceptance criteria |
+| **Frontend** | React, TypeScript, Vite, Next.js, Tailwind CSS, MUI |
+| **Data & backend** | PostgreSQL, Supabase (Auth, RLS, RPC, Edge Functions), Firebase (Auth, Firestore, Cloud Functions), pgvector |
+| **AI** | Gemini, OpenAI, RAG, tool/function calling, Claude Code, Codex, Cursor |
+| **Delivery** | Docker, GitHub Actions, Vercel, Google Cloud Run, Supabase CLI |
 
 ---
 
-### 🎓 Shadow Thesis Factory
+## Flagship Project
 
-**B2B SaaS platform for automated thesis generation using Event-Driven Multi-Agent Orchestration.**
+### Factory ERP V4 — `Lean-ERP`
 
-![Status](https://img.shields.io/badge/Status-Active-success)
-![Stack](https://img.shields.io/badge/Stack-FastAPI%20%2B%20n8n%20%2B%20Supabase-3fcf8e)
+**Status:** Active · **Type:** Solo project, own idea, private repo
 
-- **Repo:** [kohtun386/shadow-thesis-factory-poc](https://github.com/kohtun386/shadow-thesis-factory-poc) *(private)*
-- **Stack:** FastAPI · n8n · Supabase (PostgreSQL, pgvector) · Python · React
-- **Status:** Active Development
+A multi-tenant ERP for Myanmar textile and weaving mills. I own the product direction, workflow architecture, and AI-orchestrated delivery.
 
-**Architecture Highlights:**
-- **Human-in-the-Loop (HITL)** — Quality control and approval gating at every stage
-- **Citation Hard Validation** — Law 4 enforcement for verified scholarly sourcing
-- **Deterministic Data Parsing** — SPSS exports: numeric extraction separated from AI narrative generation
-- **Event-Driven Orchestration** — n8n workflow engine with centralized error handling
+**Problem it solves:** factory operations run on shared tablets, paper logs, and spreadsheet payroll. Factory ERP V4 brings production, piece-rate payroll, subcontracting, inventory, sales, and financial control into one governed system.
 
-**Key Components:**
-- FastAPI Backend-for-Frontend (BFF)
-- n8n workflow orchestration (`wf_05_chapter_writer`, `wf_error_handler`)
-- Supabase with pgvector for semantic search
-- CONCURRENTLY indexed for performance (`drafts`, `thesis_framework`)
+**Scope:**
 
----
+- Production logging and work orders
+- Piece-rate payroll
+- Subcontracting
+- Inventory and master data
+- Sales/POS and financials
+- Reporting and audit trails
+- Role-based supervisor, operator, and owner workflows
 
-### 💳 POS-system
+**Architecture:**
 
-**Web-based point-of-sale system with payments and inventory UI.**
+- Tenant isolation enforced with PostgreSQL Row Level Security
+- RPC-only approvals; no direct client writes to governed records
+- Immutable approved production records and append-only audit trails
+- Process gates that enforce valid state transitions
+- Mobile-first UX for shared factory tablets
 
-![License](https://img.shields.io/badge/License-MIT-green)
-![Stars](https://img.shields.io/github/stars/kohtun386/POS-system)
+**Stack:** React 18 · Vite · TypeScript · MUI 7 · Supabase (PostgreSQL, Auth, RLS, RPC)
 
-- **Repo:** [kohtun386/POS-system](https://github.com/kohtun386/POS-system)
-- **Stack:** TypeScript · React · Vercel
-- **Demo:** [pos-system-gilt-mu.vercel.app](https://pos-system-gilt-mu.vercel.app/)
-- **Status:** In Development
-- **Highlights:** In-browser POS, payment workflows, inventory management
+**Scale:** 1,000+ commits · 250+ migrations · 11 domain modules
+
+**Repo:** `kohtun386/Lean-ERP` *(private — walkthrough available on request)*
 
 ---
 
-### 🌐 Vibe Code Tours
+## Commercial Build
 
-**Public bilingual landing site for Vibe Code Tours.**
+### CoffeeShop POS — Paused
 
-- **Repo:** [kohtun386/vibe-code-tours.github.io](https://github.com/kohtun386/vibe-code-tours.github.io)
-- **Stack:** Static Site · HTML/CSS
-- **Live:** [vibecode.tours](https://vibecode.tours)
+**Status:** Paused · **Type:** Private commercial build, derived from an MIT-licensed base
 
----
+A multi-tenant point-of-sale platform for coffee and tea shops in Myanmar. Started from the MIT-licensed `POS-system` base used in **Vibe Code Tours**, then evolved into a private commercial product with deeper tenancy, payments, inventory, and reporting.
 
-## Architecture Philosophy
+Development is paused while I focus on Factory ERP V4. The Supabase backend is also paused, so no live demo is linked here.
 
-My systems follow **deterministic flow design**:
+**Scope:**
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    GOVERNANCE LAYER                         │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐ │
-│  │ RBAC/Auth   │  │ Audit Logs  │  │ Tenant Isolation    │ │
-│  │ (Supabase)  │  │ (Immutable) │  │ (RLS Policies)      │ │
-│  └─────────────┘  └─────────────┘  └─────────────────────┘ │
-└─────────────────────────────────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────────┐
-│                   BUSINESS LOGIC                            │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐ │
-│  │ RPC-Only    │  │ Service     │  │ Deterministic       │ │
-│  │ Approvals   │  │ Layer       │  │ State Transitions   │ │
-│  └─────────────┘  └─────────────┘  └─────────────────────┘ │
-└─────────────────────────────────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────────┐
-│                     PRESENTATION                            │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐ │
-│  │ Mobile-First│  │ React       │  │ MUI v7              │ │
-│  │ UX          │  │ Context API │  │ Components          │ │
-│  └─────────────┘  └─────────────┘  └─────────────────────┘ │
-└─────────────────────────────────────────────────────────────┘
-```
+- Multi-tenant shops, memberships, and role-based access
+- 9 payment methods, including KBZPay, WavePay, AYAPay, CBPay, and MPU
+- Split payments, credit sales, and customer credit limits
+- Inventory, purchasing, and CSV import/export
+- Discount engine and sales reports
+- Installable PWA for iPad and Android
+
+**Stack:** React 18 · Vite · TypeScript · Tailwind CSS · Supabase (PostgreSQL, Auth, Edge Functions)
+
+**Scale:** 450+ commits · 90+ migrations · 13 Edge Functions
+
+**Repo:** `kohtun386/coffeeshop-pos-commercial` *(private)*
+
+**Upstream credit:** built on the MIT-licensed `POS-system` base.
 
 ---
 
-## Let's Connect
+## AI Prototypes
 
-![GitHub](https://img.shields.io/badge/GitHub-kohtun386-12100E?style=flat&logo=github)
-![Email](https://img.shields.io/badge/Email-Contact%20Me-1f6feb?style=flat&logo=mail.ru)
+Smaller experiments used to test AI workflows, retrieval, and agent patterns. These are prototypes, not production systems.
 
-**Open to:** Collaboration on SaaS ERP systems, AI-powered automation, manufacturing workflows, and Myanmar-focused tech products.
+### AuraFit Coach
+
+**Repo:** [kohtun386/aurafit](https://github.com/kohtun386/aurafit) · **Status:** Prototype / Google Cloud Gen AI Academy entry
+
+A personal AI athletic coach and recovery journal. Athletes log training volume, RPE, sleep, and soreness; Gemini generates a recovery score, coaching feedback, and actionable recovery habits. Includes a multi-turn coach chat and a bilingual English/Myanmar interface.
+
+**Stack:** React 19 · Vite · TypeScript · Tailwind CSS · Express · Gemini API · Firebase Auth/Firestore · Google Cloud Run
+
+### Single-Merchant AI Sales MVP
+
+**Repo:** `kohtun386/Single-Merchant-AI-Assisted-Sales-MVP` *(private)* · **Status:** Prototype / pilot architecture
+
+An AI sales and customer-service prototype for a single clothing and fabric merchant. It combines product discovery, live variant stock checks, FAQ retrieval, order drafting, payment verification, and human staff handoff.
+
+**Stack:** Next.js 14 · React · TypeScript · Supabase PostgreSQL · pgvector · Gemini · OpenAI · Zod
+
+**Note:** this is a prototype, not a hosted production application.
 
 ---
+
+## Team & Hackathon Projects
+
+Work built with other people. Credit is shared; my role is stated explicitly.
+
+### HR Chronicle AI
+
+**Live:** [myanmardev.web.app](https://myanmardev.web.app) · **Repo:** [vibecode-ting/hr_chronicle_ai](https://github.com/vibecode-ting/hr_chronicle_ai) · **Event:** AI Builder Cup 2026
+
+An employee milestone and recognition platform for distributed teams across Asia Pacific. It handles birthdays and work anniversaries, AI-personalized multilingual greetings, roster OCR, email/Teams/Telegram delivery, gift budgeting, and an HR copilot.
+
+**My role:** **Team Member / Contributor**
+
+- Contributed the HR Copilot function-calling implementation
+- Set up the local Firebase emulator configuration for team development
+
+**Team:** [Htet Aung Hlaing](https://github.com/vibecode-ting) (Lead Architect & Full-Stack Developer) and [Myo Set Paing](https://github.com/Mark3172) (Core Contributor & UI/UX Specialist)
+
+**Stack:** React 19 · Vite · TypeScript · Firebase · Gemini · Three.js · Cloud Functions
+
+### ARGUS
+
+**Repo:** [kohtun386/ARGUS](https://github.com/kohtun386/ARGUS) · **Event:** Vibe Code Tours, Team-07
+
+A decentralized security framework for detecting **Shadow AI** across enterprise endpoints. Lightweight Linux, macOS, and Windows agents scan for unauthorized AI tools and report findings to a central backend and dashboard.
+
+**My role:** **Team Member / Team Lead**
+
+**Stack:** Python agents · FastAPI · SQLite · HTML/JS dashboard · API-key authentication
+
+**Note:** public fork of the [Team-07 project repository](https://github.com/vibecode-team7/ARGUS).
+
+---
+
+## How I Work
+
+1. **Operations before code.** Map the real workflow, roles, exceptions, and failure modes first.
+2. **Governance by design.** Put tenant isolation, permissions, approvals, and audit trails at the database boundary — not just in the UI.
+3. **AI-orchestrated delivery.** Use coding agents for speed, then review, test, and verify every critical path.
+4. **Local-first constraints.** Design for MMK, local payment methods, shared devices, and real connectivity conditions.
+
+---
+
+## Background
+
+- **10+ years** in hospitality and business operations management
+- **MBA**
+- Based in Myanmar
+- Currently building **Factory ERP V4**
+- Open to global remote roles in operations coordination, project management, and AI-assisted product delivery, as well as select SME software collaborations.
+
+---
+
+## Connect
+
+[LinkedIn](https://www.linkedin.com/in/ko-htun-htun-win-146970102/) · [Email](mailto:kohtunhtun386@gmail.com) · [GitHub](https://github.com/kohtun386)
 
 <p align="center">
-  <i>Building governed, deterministic, enterprise-ready SaaS platforms.</i><br>
-  <sub>Last updated: June 2026</sub>
+  <i>Operations-first product building, delivered with AI agents.</i><br>
+  <sub>Last updated: November 2026</sub>
 </p>
