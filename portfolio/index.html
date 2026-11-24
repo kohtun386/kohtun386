@@ -1,4 +1,7 @@
-<title>Ko Htun — Governance Dossier</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ko Htun — Operations &amp; Product Dossier</title>
 <style>
   :root {
     --bg: #F4EFE6;
@@ -127,8 +130,9 @@
     font-size: clamp(1.3rem, 3.4vw, 1.7rem); font-weight: 700; letter-spacing: -.01em; margin: 0;
   }
   .record-index { color: var(--pr); }
-  .roles { font-size: .74rem; letter-spacing: .05em; color: var(--muted); white-space: nowrap; }
+  .roles { font-size: .74rem; letter-spacing: .05em; color: var(--muted); }
   .one-liner { font-size: 1.02rem; color: var(--ink); max-width: 62ch; margin: 12px 0 20px; }
+  .one-liner code, .caveats code { font-family: ui-monospace, "SF Mono", "Cascadia Mono", "JetBrains Mono", "Fira Code", Menlo, Consolas, monospace; font-size: .9em; color: var(--pr); background: color-mix(in srgb, var(--pr) 10%, transparent); padding: .05em .32em; border-radius: 4px; }
 
   .stats {
     display: grid; grid-template-columns: repeat(4, minmax(0,1fr));
@@ -170,8 +174,55 @@
   }
   .repo-link a:hover { border-bottom-color: currentColor; }
   .repo-link a::after { content: " ↗"; }
+  .repo-private {
+    margin-top: 10px;
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", "JetBrains Mono", "Fira Code", Menlo, Consolas, monospace;
+    font-size: .78rem; letter-spacing: .02em; color: var(--muted);
+  }
   .foot-link { color: var(--teal); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--teal) 45%, transparent); }
   .foot-link:hover { border-bottom-color: currentColor; }
+
+  /* ---------- grouped entries (record 03) ---------- */
+  .group { margin-top: 30px; }
+  .group-head {
+    display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+    margin: 0 0 14px;
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", "JetBrains Mono", "Fira Code", Menlo, Consolas, monospace;
+    font-size: .74rem; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--pr);
+  }
+  .group-head span { font-size: .7rem; letter-spacing: .04em; text-transform: none; color: var(--muted); }
+  .entries { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+  .entry {
+    display: flex; flex-direction: column; gap: 8px;
+    border: 1px solid var(--line); border-radius: 8px;
+    background: var(--bg-raise); padding: 16px 18px 15px;
+  }
+  .entry .kind {
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", "JetBrains Mono", "Fira Code", Menlo, Consolas, monospace;
+    font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--pr);
+  }
+  .entry h3 {
+    margin: 0;
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", "JetBrains Mono", "Fira Code", Menlo, Consolas, monospace;
+    font-size: 1rem; font-weight: 700; letter-spacing: -.01em;
+  }
+  .entry p { margin: 0; font-size: .88rem; line-height: 1.55; color: var(--muted); }
+  .entry .stack {
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", "JetBrains Mono", "Fira Code", Menlo, Consolas, monospace;
+    font-size: .7rem; line-height: 1.5; color: var(--ink);
+  }
+  .entry .role-line { font-size: .82rem; color: var(--ink); border-top: 1px dashed var(--line-soft); padding-top: 8px; }
+  .entry .role-line b {
+    margin-right: 4px;
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", "JetBrains Mono", "Fira Code", Menlo, Consolas, monospace;
+    font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--pr);
+  }
+  .entry .note { font-size: .74rem; color: var(--muted); }
+  .entry .repo-link { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin-top: auto; padding-top: 2px; }
+  .entry .repo-link a { white-space: nowrap; }
+  .entry .repo-private { margin-top: auto; }
+  .entry .sep { display: none; }
 
   /* ---------- footer ---------- */
   .foot {
@@ -187,6 +238,7 @@
     .fact { grid-template-columns: 1fr; gap: 8px; }
     .fact .stamp { align-self: auto; }
     .cover { padding: 22px 20px 24px; }
+    .entries { grid-template-columns: 1fr; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -200,112 +252,105 @@
   <!-- cover -->
   <header class="cover">
     <div class="cover-top">
-      <span class="eyebrow">Engineering Dossier</span>
-      <span class="cover-tag">coffee-memory.github.io · two flagship systems</span>
+      <span class="eyebrow">Operations &amp; Product Dossier</span>
+      <span class="cover-tag">kohtun386 · workflow architecture &amp; AI-orchestrated builds</span>
     </div>
     <div class="rule"></div>
 
     <dl class="meta">
       <div><dt>author</dt><dd>Ko Htun (Htun Htun Win)</dd></div>
-      <div><dt>region</dt><dd>Myanmar</dd></div>
-      <div><dt>focus</dt><dd>SaaS · ERP · POS · Payroll</dd></div>
-      <div><dt>status</dt><dd>Actively building</dd></div>
-      <div><dt>principle</dt><dd>Governance first, revenue second</dd></div>
-      <div><dt>stack</dt><dd>React · TypeScript · Supabase</dd></div>
+      <div><dt>role</dt><dd>Operations &amp; Workflow Architect</dd></div>
+      <div><dt>background</dt><dd>MBA · 10+ yrs Hospitality Ops</dd></div>
+      <div><dt>region</dt><dd>Myanmar · Open to Global Remote</dd></div>
+      <div><dt>delivery</dt><dd>AI-Orchestrated (Claude, Codex, Cursor, Gemini)</dd></div>
+      <div><dt>stack</dt><dd>React · TypeScript · Supabase · Firebase</dd></div>
     </dl>
 
-    <h1 class="title">Sealed at the database.<span class="cursor" aria-hidden="true"></span></h1>
-    <p class="sub">Two flagship projects where the boundary invariants live in the schema — approvals are RPC-only, approved records are immutable, and the audit trail is append-only. No client bug can violate them.</p>
+    <h1 class="title">Operations first.<span class="cursor" aria-hidden="true"></span><br>Sealed in the database.</h1>
+    <p class="sub">I map how a business actually runs — roles, handoffs, approvals, and exceptions — then ship the system with AI coding agents. The hard rules live in the schema: RLS tenant isolation, RPC-only approvals, immutable records, and an append-only audit trail.</p>
 
     <div class="tagline">
-      <span><b>Governance layer</b> RBAC · Audit · Tenant isolation</span>
-      <span><b>Business logic</b> RPC-only approvals · Service layer</span>
-      <span><b>Presentation</b> Mobile-first · React · Context</span>
+      <span><b>Workflow</b> Roles · approvals · exceptions</span>
+      <span><b>Delivery</b> Claude Code · Codex · Cursor · Gemini</span>
+      <span><b>Contact</b> <a class="foot-link" href="https://www.linkedin.com/in/ko-htun-htun-win-146970102/" target="_blank" rel="noopener">LinkedIn</a> · <a class="foot-link" href="mailto:kohtunhtun386@gmail.com">Email</a> · <a class="foot-link" href="https://github.com/kohtun386" target="_blank" rel="noopener">GitHub</a></span>
     </div>
   </header>
 
   <!-- invariants spine -->
-  <div class="spine" aria-label="Shared invariants">
+  <div class="spine" aria-label="Shared operating principles">
+    <span class="stamp" style="--stamp-c:var(--teal)">Operations-first design</span>
     <span class="stamp" style="--stamp-c:var(--teal)">RLS tenant isolation</span>
     <span class="stamp" style="--stamp-c:var(--teal)">RPC-only approvals</span>
     <span class="stamp" style="--stamp-c:var(--teal)">Immutable records</span>
     <span class="stamp" style="--stamp-c:var(--teal)">Append-only audit</span>
-    <span class="stamp" style="--stamp-c:var(--teal)">Server-side truth</span>
+    <span class="stamp" style="--stamp-c:var(--teal)">AI-orchestrated delivery</span>
   </div>
 
   <!-- record 01 : ERP -->
   <section class="record erp" style="--pr:var(--brass)">
     <div class="record-head">
-      <h2 class="record-name"><span class="record-index">01</span> Nexus Factory ERP</h2>
-      <span class="roles">owner · admin · supervisor · editor · viewer</span>
+      <h2 class="record-name"><span class="record-index">01</span> Factory ERP V4 (Lean-ERP)</h2>
+      <span class="roles">Active · Solo Project (Own Idea) · Private Repo</span>
     </div>
-    <p class="one-liner">Governed, multi-tenant workforce-intelligence SaaS for garment factories — a factory ERP where the database itself enforces the business rules.</p>
-    <div class="roles">React 18 · TypeScript (strict) · Vite · MUI v7 · Supabase (Postgres 17, RLS, RPCs, Auth) · i18next EN+MY · PWA</div>
-    <div class="repo-link"><a href="https://github.com/kohtun386/factory-erp-supabase" target="_blank" rel="noopener">github.com/kohtun386/factory-erp-supabase</a></div>
+    <p class="one-liner">A multi-tenant ERP for Myanmar textile and weaving mills — production, piece-rate payroll, subcontracting, inventory, sales, and financial control in one governed system.</p>
+    <div class="roles">Own idea · Product direction · Workflow architecture · AI-orchestrated delivery</div>
+    <div class="roles" style="margin-top:4px; white-space:normal">React 18 · TypeScript · Vite · MUI 7 · Supabase (PostgreSQL, RLS, RPC) · PWA · EN+MY</div>
+    <div class="repo-private">kohtun386/Lean-ERP (private — walkthrough available on request)</div>
 
     <div class="stats">
-      <div class="stat"><div class="stat-n">38</div><div class="stat-l">tables</div></div>
-      <div class="stat"><div class="stat-n">109</div><div class="stat-l">RLS policies</div></div>
-      <div class="stat"><div class="stat-n">55</div><div class="stat-l">SECURITY DEFINER</div></div>
-      <div class="stat"><div class="stat-n">122</div><div class="stat-l">triggers</div></div>
+      <div class="stat"><div class="stat-n">1,000+</div><div class="stat-l">commits</div></div>
+      <div class="stat"><div class="stat-n">250+</div><div class="stat-l">migrations</div></div>
+      <div class="stat"><div class="stat-n">11</div><div class="stat-l">domain modules</div></div>
+      <div class="stat"><div class="stat-n">75</div><div class="stat-l">test files</div></div>
     </div>
 
     <ul class="facts">
       <li class="fact">
-        <span class="stamp" style="--stamp-c:var(--brass)">Tenant context</span>
-        <p>Every policy gates on <code>factory_id = current_factory_id()</code>, resolved from active membership — and <code>factory_id</code> itself is immutable across ~20 tables.</p>
+        <span class="stamp" style="--stamp-c:var(--brass)">Tenant isolation</span>
+        <p>Every policy gates on <code>factory_id = current_factory_id()</code>, resolved from active membership — and <code>factory_id</code> is immutable across governed tables.</p>
       </li>
       <li class="fact">
-        <span class="stamp" style="--stamp-c:var(--brass)">Write: RPC-only</span>
-        <p><code>production_logs</code> carries <em>only</em> a SELECT policy — clients cannot INSERT, UPDATE, or DELETE. All writes flow through <code>approve_production_log</code> / <code>log_production_atomic</code>, which open a write path via a session flag no client session can set.</p>
+        <span class="stamp" style="--stamp-c:var(--brass)">RPC-only writes</span>
+        <p>Production records carry select-only policies. Clients cannot insert, update, or delete directly; all governed writes flow through approval and logging RPCs.</p>
       </li>
       <li class="fact">
-        <span class="stamp" style="--stamp-c:var(--brass)">Audit: append-only</span>
-        <p><code>audit_logs</code> raises on UPDATE and DELETE. The trail cannot be rewritten, and the approval flow writes its own audit entry.</p>
+        <span class="stamp" style="--stamp-c:var(--brass)">Immutable records</span>
+        <p>Approved production logs are locked — only payment status may change. <code>audit_logs</code> rejects updates and deletes, so the trail cannot be rewritten.</p>
       </li>
       <li class="fact">
-        <span class="stamp" style="--stamp-c:var(--brass)">State: locked</span>
-        <p>Approved logs are locked — only <code>payment_status</code> may change. Payroll is a real state machine: <code>DRAFT → CALCULATED → FINALIZED → PAID</code>, with invalid transitions rejected by trigger.</p>
+        <span class="stamp" style="--stamp-c:var(--brass)">Payroll states</span>
+        <p>Piece-rate payroll moves through <code>DRAFT → CALCULATED → FINALIZED → PAID</code>. Invalid transitions are rejected by trigger, not by UI convention.</p>
       </li>
       <li class="fact">
-        <span class="stamp" style="--stamp-c:var(--brass)">Atomic allocation</span>
-        <p>On approval, material consumption is computed from a <code>required_materials</code> snapshot and written atomically with stock movements and trace rows — idempotent on retry.</p>
+        <span class="stamp" style="--stamp-c:var(--brass)">Domain depth</span>
+        <p>Production logging, piece-rate payroll, subcontracting, material allocation, stock movements, purchasing, sales, and financial reporting — not a CRUD demo.</p>
       </li>
       <li class="fact">
-        <span class="stamp" style="--stamp-c:var(--brass)">Onboard: invite-only</span>
-        <p>Invitation RPCs plus a <code>provision-tenant</code> Deno edge function create factory and owner; tenant isolation is in place from day one.</p>
+        <span class="stamp" style="--stamp-c:var(--brass)">Factory-floor UX</span>
+        <p>Mobile-first screens for shared tablets, with role-based supervisor, operator, and owner flows. English and Burmese interface support.</p>
       </li>
       <li class="fact">
-        <span class="stamp" style="--stamp-c:var(--brass)">CI: governed writes</span>
-        <p>A script greps the entire frontend for any forbidden direct table write and fails CI — a belt-and-suspenders layer on top of RLS.</p>
+        <span class="stamp" style="--stamp-c:var(--brass)">Test surface</span>
+        <p>75 test files across Vitest and Playwright, covering approval paths, state transitions, and core operational workflows.</p>
       </li>
     </ul>
-
-    <div class="caveats">
-      <h4>Found in review</h4>
-      <ul>
-        <li>E2E tests exist but are not wired into CI.</li>
-        <li><code>deploy/SECURITY_NOTES.md</code> claims an <code>npm audit</code> step that CI does not actually run.</li>
-        <li>The README quotes a “canonical UPDATE policy” from an archived migration — the live baseline is stricter, with no client UPDATE path at all.</li>
-      </ul>
-    </div>
   </section>
 
   <!-- record 02 : POS -->
   <section class="record pos" style="--pr:var(--copper)">
     <div class="record-head">
-      <h2 class="record-name"><span class="record-index">02</span> POS-system</h2>
-      <span class="roles">platform_admin · admin · manager · cashier</span>
+      <h2 class="record-name"><span class="record-index">02</span> CoffeeShop POS (Paused)</h2>
+      <span class="roles">Paused · Private Commercial Build</span>
     </div>
-    <p class="one-liner">Multi-tenant SaaS POS for Myanmar coffee &amp; tea shops — a 12-commit starter rebuilt into a tiered, RLS-hardened platform. 404 commits ahead of upstream.</p>
-    <div class="roles">React 18 · TypeScript 5.5 (strict) · Vite 5 · Tailwind 3 · Context + useReducer · Supabase (RLS, Edge Functions, Realtime) · PWA</div>
-    <div class="repo-link"><a href="https://github.com/kohtun386/POS-system" target="_blank" rel="noopener">github.com/kohtun386/POS-system</a></div>
+    <p class="one-liner">A multi-tenant POS for Myanmar coffee and tea shops — started from the MIT-licensed <code>POS-system</code> base used in Vibe Code Tours, then rebuilt into a private commercial platform. Paused while Factory ERP V4 leads.</p>
+    <div class="roles">React 18 · TypeScript · Vite · Tailwind 3 · Supabase (PostgreSQL, RLS, Edge Functions) · PWA</div>
+    <div class="repo-private">kohtun386/coffeeshop-pos-commercial (private)</div>
 
     <div class="stats">
-      <div class="stat"><div class="stat-n">404</div><div class="stat-l">commits ahead</div></div>
-      <div class="stat"><div class="stat-n">86</div><div class="stat-l">migrations</div></div>
+      <div class="stat"><div class="stat-n">450+</div><div class="stat-l">commits</div></div>
+      <div class="stat"><div class="stat-n">90+</div><div class="stat-l">migrations</div></div>
       <div class="stat"><div class="stat-n">13</div><div class="stat-l">edge functions</div></div>
-      <div class="stat"><div class="stat-n">51</div><div class="stat-l">tests</div></div>
+      <div class="stat"><div class="stat-n">9</div><div class="stat-l">payment methods</div></div>
     </div>
 
     <ul class="facts">
@@ -315,57 +360,115 @@
       </li>
       <li class="fact">
         <span class="stamp" style="--stamp-c:var(--copper)">9 payment methods</span>
-        <p>KBZpay, WavePay, AYAPay, CBPay, MPU — plus split payments and credit sales, built for Myanmar payment reality.</p>
+        <p>KBZPay, WavePay, AYAPay, CBPay, MPU, cash, card, credit, and digital — with split payments and customer credit limits, built for Myanmar payment reality.</p>
       </li>
       <li class="fact">
         <span class="stamp" style="--stamp-c:var(--copper)">Tiered SaaS</span>
-        <p>Free / Growth / Pro enforced server-side: a 50-product limit with row-lock race protection and daily-order limits with <code>SELECT … FOR UPDATE</code>.</p>
+        <p>Free / Growth / Pro limits are enforced server-side: a product cap with row-lock race protection and daily-order limits with <code>SELECT … FOR UPDATE</code>.</p>
       </li>
       <li class="fact">
         <span class="stamp" style="--stamp-c:var(--copper)">Role-aware RLS</span>
-        <p><code>platform_admin</code> never appears in a policy — it operates only through service-role Edge Functions. Privileged RPCs are <code>REVOKE EXECUTE FROM PUBLIC</code>; one Greptile-audited HIGH-severity vector was closed exactly this way.</p>
+        <p><code>platform_admin</code> never appears in a client policy — it operates only through service-role Edge Functions. Privileged RPCs are revoked from public execution.</p>
       </li>
       <li class="fact">
-        <span class="stamp" style="--stamp-c:var(--copper)">Audit: implicit deny</span>
-        <p><code>audit_logs</code> has zero RLS policies — implicit deny for clients; only Edge Functions write, capturing IP from <code>X-Forwarded-For</code>.</p>
+        <span class="stamp" style="--stamp-c:var(--copper)">Implicit deny</span>
+        <p><code>audit_logs</code> has zero client policies — implicit deny. Only Edge Functions write, capturing request origin for the trail.</p>
       </li>
       <li class="fact">
-        <span class="stamp" style="--stamp-c:var(--copper)">Data: minimized</span>
-        <p>Card numbers are stripped from JSONB in production data, and a CORS wildcard was replaced with an explicit allowlist.</p>
+        <span class="stamp" style="--stamp-c:var(--copper)">Counter-ready PWA</span>
+        <p>Installable on iPad and Android for shared shop counters, with inventory, purchasing, discounts, CSV import/export, and sales reporting.</p>
       </li>
       <li class="fact">
         <span class="stamp" style="--stamp-c:var(--copper)">Tested</span>
-        <p>33 pgTAP RLS tests · 11 Vitest suites · 7 Playwright journeys. i18n parity and schema-drift gates run in CI and on <code>pre-commit</code>.</p>
+        <p>22 test files and roughly 129 test blocks across Vitest, React Testing Library, and Playwright — including payment, checkout, and permission paths.</p>
       </li>
     </ul>
 
     <div class="caveats">
-      <h4>Found in review</h4>
+      <h4>Status notes</h4>
       <ul>
-        <li>i18n is Phase 0 — the parity harness is green, but actual Burmese translation is not wired in yet.</li>
-        <li><code>claude-mem</code> sits in runtime dependencies; likely an agent-tooling artifact rather than a shipped feature.</li>
-        <li>Stale metadata: README counts (55→86 migrations), <code>package.json</code> repository still points upstream, store default is <code>'sekaLabs 2025 POS'</code>.</li>
+        <li>Development is paused while Factory ERP V4 is the focus. The Supabase backend is also paused, so no live demo is linked here.</li>
+        <li>The public <code>POS-system</code> repo is an older mirror; this private repository is the commercial line.</li>
       </ul>
     </div>
 
     <div class="attrib">
-      <b>Attribution:</b> the 404 commits are the author’s work on top of <code>12 upstream commits</code>. This is a fork-turned-rewrite, not a from-scratch project — the multi-tenant SaaS framing reflects exactly that.
+      <b>Attribution:</b> 12 commits are upstream or one-off; the remaining 445 are the author’s. This is a fork-turned-commercial-rewrite, not a from-scratch project.
+    </div>
+  </section>
+
+  <!-- record 03 : AI prototypes & team projects -->
+  <section class="record ai" style="--pr:var(--teal)">
+    <div class="record-head">
+      <h2 class="record-name"><span class="record-index">03</span> AI Prototypes &amp; Team Projects</h2>
+      <span class="roles">Prototypes · hackathons · team builds</span>
+    </div>
+    <p class="one-liner">Smaller experiments and collaborative builds. Prototypes are labeled as prototypes, and team work states the role explicitly.</p>
+
+    <div class="group">
+      <h3 class="group-head">AI prototypes <span>not production apps</span></h3>
+      <div class="entries">
+        <article class="entry">
+          <span class="kind">Prototype · public repo</span>
+          <h3>AuraFit Coach</h3>
+          <p>A personal AI athletic coach and recovery journal. Athletes log training volume, RPE, sleep, and soreness; Gemini returns a recovery score, coaching feedback, and recovery habits. Includes multi-turn coach chat and an English/Burmese interface.</p>
+          <div class="stack">React 19 · TypeScript · Vite · Tailwind 4 · Express · Gemini · Firebase · Cloud Run</div>
+          <div class="repo-link"><a href="https://github.com/kohtun386/aurafit" target="_blank" rel="noopener">github.com/kohtun386/aurafit</a></div>
+          <div class="note">Built for Google Cloud Gen AI Academy. Prototype, not a hosted product.</div>
+        </article>
+
+        <article class="entry">
+          <span class="kind">Prototype · private repo</span>
+          <h3>Single-Merchant AI Sales MVP</h3>
+          <p>An AI sales and customer-service assistant for a clothing and fabric merchant — product discovery, live variant stock checks, FAQ retrieval, order drafting, payment verification, and human staff handoff.</p>
+          <div class="stack">Next.js 14 · TypeScript · Supabase · pgvector · Gemini · OpenAI · Zod</div>
+          <div class="repo-private">kohtun386/Single-Merchant-AI-Assisted-Sales-MVP (private)</div>
+          <div class="note">28 commits · 11 migrations · 17 test files. Prototype, not a hosted production app.</div>
+        </article>
+      </div>
+    </div>
+
+    <div class="group">
+      <h3 class="group-head">Team &amp; hackathon <span>shared credit, explicit role</span></h3>
+      <div class="entries">
+        <article class="entry">
+          <span class="kind">AI Builder Cup 2026 · team</span>
+          <h3>HR Chronicle AI</h3>
+          <p>An employee milestone and recognition platform for distributed teams — birthdays and anniversaries, AI-personalized multilingual greetings, roster OCR, gift budgeting, and an HR copilot.</p>
+          <div class="stack">React 19 · TypeScript · Firebase · Gemini · Cloud Functions</div>
+          <div class="role-line"><b>Role</b> Team Member / Contributor — HR Copilot function calling, local Firebase emulator setup.</div>
+          <div class="repo-link"><a href="https://myanmardev.web.app" target="_blank" rel="noopener">myanmardev.web.app</a> <span class="sep">·</span> <a href="https://github.com/vibecode-ting/hr_chronicle_ai" target="_blank" rel="noopener">vibecode-ting/hr_chronicle_ai</a></div>
+          <div class="note">Team: Htet Aung Hlaing (lead architect) · Myo Set Paing (UI/UX).</div>
+        </article>
+
+        <article class="entry">
+          <span class="kind">Vibe Code Tours · Team-07</span>
+          <h3>ARGUS</h3>
+          <p>A decentralized security framework for detecting Shadow AI across enterprise endpoints. Linux, macOS, and Windows agents report to a central backend and dashboard.</p>
+          <div class="stack">Python agents · FastAPI · SQLite · HTML/JS dashboard · API-key auth</div>
+          <div class="role-line"><b>Role</b> Team Member / Team Lead.</div>
+          <div class="repo-link"><a href="https://github.com/kohtun386/ARGUS" target="_blank" rel="noopener">github.com/kohtun386/ARGUS</a></div>
+          <div class="note">Public fork of the Team-07 project repository.</div>
+        </article>
+      </div>
     </div>
   </section>
 
   <!-- footer -->
   <footer class="foot">
     <div class="row">
-      <span>Every claim above was verified against the repositories on 2026-08-10 — git history, migrations, configs, and test suites.</span>
-      <span>Ambiguities are marked <b>found in review</b> rather than hidden.</span>
+      <span>Every claim above was verified against the repositories in November 2026 — git history, migrations, configs, and test suites.</span>
+      <span>Prototypes are labeled as prototypes; team roles are stated explicitly.</span>
     </div>
     <div class="row" style="margin-top:8px">
-      <span>ERP record · brass</span>
-      <span>POS record · copper</span>
-      <span>shared spine · teal</span>
+      <span>Record 01 · brass</span>
+      <span>Record 02 · copper</span>
+      <span>Record 03 · teal</span>
     </div>
     <div class="row" style="margin-top:12px">
-      <span>Profile · <a href="https://github.com/kohtun386" target="_blank" rel="noopener" class="foot-link">github.com/kohtun386</a></span>
+      <span><a class="foot-link" href="https://www.linkedin.com/in/ko-htun-htun-win-146970102/" target="_blank" rel="noopener">LinkedIn</a></span>
+      <span><a class="foot-link" href="mailto:kohtunhtun386@gmail.com">kohtunhtun386@gmail.com</a></span>
+      <span><a class="foot-link" href="https://github.com/kohtun386" target="_blank" rel="noopener">github.com/kohtun386</a></span>
     </div>
   </footer>
 
